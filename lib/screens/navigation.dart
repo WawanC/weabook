@@ -20,7 +20,7 @@ class _NavigationState extends State<Navigation> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Weebook",
+          "Weabook",
         ),
         centerTitle: true,
         elevation: 0,

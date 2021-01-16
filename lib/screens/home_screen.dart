@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/home/menu_grid_item.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -37,6 +38,26 @@ class HomeScreen extends StatelessWidget {
               trailing: IconButton(
                 icon: Icon(Icons.arrow_forward_ios_sharp),
                 onPressed: () {},
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          Expanded(
+            child: Center(
+              child: GridView(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1 / 1,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                ),
+                children: [
+                  MenuGridItem('Search Anime', Icons.search),
+                  MenuGridItem('Post a Review', Icons.star),
+                  MenuGridItem('Anime Rank', Icons.leaderboard),
+                  MenuGridItem('Gacha', Icons.attach_money),
+                ],
               ),
             ),
           ),
