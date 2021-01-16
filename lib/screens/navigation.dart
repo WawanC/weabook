@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './home_screen.dart';
 import './feed_screen.dart';
 import './friends_screen.dart';
+import '../widgets/main_drawer.dart';
 
 class Navigation extends StatefulWidget {
   @override
@@ -18,6 +19,7 @@ class _NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(
         title: Text(
           "Weabook",

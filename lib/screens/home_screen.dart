@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                   MenuGridItem('Search Anime', Icons.search),
                   MenuGridItem('Post a Review', Icons.star),
                   MenuGridItem('Anime Rank', Icons.leaderboard),
-                  MenuGridItem('Gacha', Icons.attach_money),
+                  MenuGridItem('Watch History', Icons.history),
                 ],
               ),
             ),
