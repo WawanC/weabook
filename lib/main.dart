@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/navigation.dart';
+import 'screens/search_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
       ),
       home: Navigation(),
+      routes: {
+        SearchScreen.routeName: (ctx) => SearchScreen(),
+      },
     );
   }
 }

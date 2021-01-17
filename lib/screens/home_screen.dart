@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/home/menu_grid_item.dart';
+import './search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -9,16 +10,27 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: double.infinity,
             height: 100,
             padding: EdgeInsets.all(10),
             alignment: Alignment.centerLeft,
-            child: Text(
-              'Hello Player',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Hello Player',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  child: Text(
+                    'Your Points : 690',
+                    textAlign: TextAlign.end,
+                  ),
+                ),
+              ],
             ),
           ),
           Card(
@@ -53,10 +65,28 @@ class HomeScreen extends StatelessWidget {
                   mainAxisSpacing: 20,
                 ),
                 children: [
-                  MenuGridItem('Search Anime', Icons.search),
-                  MenuGridItem('Post a Review', Icons.star),
-                  MenuGridItem('Anime Rank', Icons.leaderboard),
-                  MenuGridItem('Watch History', Icons.history),
+                  MenuGridItem(
+                    'Search Anime',
+                    Icons.search,
+                    () {
+                      Navigator.of(context).pushNamed(SearchScreen.routeName);
+                    },
+                  ),
+                  MenuGridItem(
+                    'Post a Review',
+                    Icons.star,
+                    () {},
+                  ),
+                  MenuGridItem(
+                    'Anime Rank',
+                    Icons.leaderboard,
+                    () {},
+                  ),
+                  MenuGridItem(
+                    'Watch History',
+                    Icons.history,
+                    () {},
+                  ),
                 ],
               ),
             ),
