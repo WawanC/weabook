@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './anime_detail_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   static final String routeName = '/search';
@@ -22,7 +23,13 @@ class _SearchScreenState extends State<SearchScreen> {
         itemBuilder: (bctx, idx) => Column(
           children: [
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed(AnimeDetailScreen.routeName)
+                    .then(
+                      (value) => Navigator.of(context).pop(),
+                    );
+              },
               leading: Container(
                 width: 50,
                 decoration: BoxDecoration(
