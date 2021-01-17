@@ -41,7 +41,7 @@ class MainDrawer extends StatelessWidget {
               color: Colors.red,
             ),
             title: Text(
-              "Exit",
+              "Log-Out",
               style: TextStyle(color: Colors.red),
             ),
           ),

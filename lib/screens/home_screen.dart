@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/home/menu_grid_item.dart';
 import './search_screen.dart';
+import './anime_review_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -75,7 +76,10 @@ class HomeScreen extends StatelessWidget {
                   MenuGridItem(
                     'Post a Review',
                     Icons.star,
-                    () {},
+                    () {
+                      Navigator.of(context)
+                          .pushNamed(AnimeReviewScreen.routeName);
+                    },
                   ),
                   MenuGridItem(
                     'Anime Rank',
