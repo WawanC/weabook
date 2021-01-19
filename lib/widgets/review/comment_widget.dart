@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CommentWidget extends StatefulWidget {
+  final Function _submitHandler;
+  CommentWidget(this._submitHandler);
   @override
   _CommentWidgetState createState() => _CommentWidgetState();
 }
@@ -21,6 +23,9 @@ class _CommentWidgetState extends State<CommentWidget> {
           ),
           TextField(
             decoration: InputDecoration(hintText: "Enter Comment Here ..."),
+            onChanged: (value) {
+              widget._submitHandler(value);
+            },
           ),
         ],
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class StarsWidget extends StatefulWidget {
+  final Function _submitHandler;
+  StarsWidget(this._submitHandler);
   @override
   _StarsWidgetState createState() => _StarsWidgetState();
 }
@@ -32,6 +34,7 @@ class _StarsWidgetState extends State<StarsWidget> {
                     size: 50,
                   ),
                   onPressed: () {
+                    widget._submitHandler(idx + 1);
                     setState(() {
                       currentStar = idx + 1;
                     });

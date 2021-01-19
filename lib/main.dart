@@ -28,8 +28,16 @@ class MyApp extends StatelessWidget {
             home: StreamBuilder(
               stream: FirebaseAuth.instance.userChanges(),
               builder: (bctx, snapshot) {
-                if (snapshot.hasData) return Navigation();
-                return AuthScreen();
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                } else {
+                  if (snapshot.hasData) return Navigation();
+                  return AuthScreen();
+                }
               },
             ),
             routes: {

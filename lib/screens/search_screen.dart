@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import './anime_detail_screen.dart';
+import './anime_review_screen.dart';
 import '../helpers/jikan.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SearchScreen extends StatefulWidget {
   static final String routeName = '/search';
@@ -10,7 +13,20 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   List<dynamic> animeList;
+  String category;
+  bool isInit = false;
   bool isLoading = false;
+  final uid = FirebaseAuth.instance.currentUser.uid;
+
+  @override
+  void didChangeDependencies() {
+    if (!isInit) {
+      category = ModalRoute.of(context).settings.arguments;
+      isInit = true;
+    }
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,15 +65,30 @@ class _SearchScreenState extends State<SearchScreen> {
                   itemBuilder: (bctx, idx) => Column(
                     children: [
                       ListTile(
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(
-                                AnimeDetailScreen.routeName,
-                                arguments: animeList[idx]['mal_id'],
-                              )
-                              .then(
-                                (value) => Navigator.of(context).pop(),
-                              );
+                        onTap: () async {
+                          if (category == "currentlyWatch") {
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(uid)
+                                .update(
+                              {"currentlyWatch": animeList[idx]['mal_id']},
+                            );
+                            Navigator.of(context).pop();
+                          } else if (category == "searchAnime") {
+                            Navigator.of(context)
+                                .pushNamed(
+                                  AnimeDetailScreen.routeName,
+                                  arguments: animeList[idx]['mal_id'],
+                                )
+                                .then(
+                                  (value) => Navigator.of(context).pop(),
+                                );
+                          } else if (category == "postReview") {
+                            Navigator.of(context).pushNamed(
+                              AnimeReviewScreen.routeName,
+                              arguments: animeList[idx]['mal_id'],
+                            );
+                          }
                         },
                         leading: Container(
                           width: 50,

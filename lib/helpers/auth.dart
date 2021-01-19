@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:weabook/helpers/http_exception.dart';
-import '../helpers/auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+FirebaseFirestore firestore = FirebaseFirestore.instance;
 FirebaseAuth auth = FirebaseAuth.instance;
 
 Future<void> signin(String email, String password, String username) async {
@@ -11,7 +12,12 @@ Future<void> signin(String email, String password, String username) async {
       email: email,
       password: password,
     );
-    print(userCredential);
+    await firestore.collection('users').doc(userCredential.user.uid).set({
+      "email" : email,
+      "username" : username,
+      "points" : 0,
+      "currentlyWatch" : null,
+    });
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
       print('The password provided is too weak.');
