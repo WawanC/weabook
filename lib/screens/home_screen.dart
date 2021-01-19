@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
               //   ),
               // ),
               title: Text("I'm Currently Watching :"),
-              subtitle: Text("Naruto Shippuden"),
+              subtitle: Text("Anime Title"),
               trailing: IconButton(
                 icon: Icon(Icons.arrow_forward_ios_sharp),
                 onPressed: () {},
@@ -55,43 +55,46 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          Expanded(
-            child: Center(
-              child: GridView(
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 1 / 1,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Expanded(
+              child: Center(
+                child: GridView(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                  ),
+                  children: [
+                    MenuGridItem(
+                      'Search Anime',
+                      Icons.search,
+                      () {
+                        Navigator.of(context).pushNamed(SearchScreen.routeName);
+                      },
+                    ),
+                    MenuGridItem(
+                      'Post a Review',
+                      Icons.star,
+                      () {
+                        Navigator.of(context)
+                            .pushNamed(AnimeReviewScreen.routeName);
+                      },
+                    ),
+                    MenuGridItem(
+                      'Anime Rank',
+                      Icons.leaderboard,
+                      () {},
+                    ),
+                    MenuGridItem(
+                      'Watch History',
+                      Icons.history,
+                      () {},
+                    ),
+                  ],
                 ),
-                children: [
-                  MenuGridItem(
-                    'Search Anime',
-                    Icons.search,
-                    () {
-                      Navigator.of(context).pushNamed(SearchScreen.routeName);
-                    },
-                  ),
-                  MenuGridItem(
-                    'Post a Review',
-                    Icons.star,
-                    () {
-                      Navigator.of(context)
-                          .pushNamed(AnimeReviewScreen.routeName);
-                    },
-                  ),
-                  MenuGridItem(
-                    'Anime Rank',
-                    Icons.leaderboard,
-                    () {},
-                  ),
-                  MenuGridItem(
-                    'Watch History',
-                    Icons.history,
-                    () {},
-                  ),
-                ],
               ),
             ),
           ),

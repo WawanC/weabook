@@ -26,7 +26,7 @@ class FeedScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            subtitle: Text("Naruto Shipudden"),
+            subtitle: Text("Anime Title"),
             trailing: Icon(Icons.arrow_forward_ios_sharp),
           ),
         );

@@ -30,6 +30,7 @@ class _NavigationState extends State<Navigation> {
       backgroundColor: Theme.of(context).primaryColor,
       body: _pages[_selectedIdx],
       bottomNavigationBar: BottomNavigationBar(
+        
         currentIndex: _selectedIdx,
         onTap: (idx) {
           setState(() {

@@ -32,7 +32,7 @@ class FriendsScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Naruto Shipudden",
+                  "Anime Title",
                   style: TextStyle(
                     color: Colors.black,
                   ),
