@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/home/menu_grid_item.dart';
 import './search_screen.dart';
-import './anime_review_screen.dart';
+import './watch_history_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -80,8 +80,7 @@ class HomeScreen extends StatelessWidget {
                     child: Center(
                       child: GridView(
                         shrinkWrap: true,
-                        gridDelegate:
-                            SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           childAspectRatio: 1,
                           crossAxisSpacing: 20,
@@ -114,7 +113,10 @@ class HomeScreen extends StatelessWidget {
                           MenuGridItem(
                             'Watch History',
                             Icons.history,
-                            () {},
+                            () {
+                              Navigator.of(context)
+                                  .pushNamed(WatchHistoryScreen.routeName);
+                            },
                           ),
                         ],
                       ),
